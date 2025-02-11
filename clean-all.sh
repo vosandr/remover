@@ -8,66 +8,66 @@ function should_clean() {
   case $project_type in
     "flutter")
       if [ -d "$path/build" ]; then
-        echo "Требуется очистка Flutter-проекта в $path"
+        echo "Cleaning required for Flutter project in $path"
         return 0
       else
-        echo "Очистка не требуется для Flutter-проекта в $path"
+        echo "Cleaning not required for Flutter project in $path"
         return 1
       fi
       ;;
     "dart")
       if [ -d "$path/build" ]; then
-        echo "Требуется очистка Dart-проекта в $path"
+        echo "Cleaning required for Dart project in $path"
         return 0
       else
-        echo "Очистка не требуется для Dart-проекта в $path"
+        echo "Cleaning not required for Dart project in $path"
         return 1
       fi
       ;;
     "js")
       if [ -d "$path/node_modules" ]; then
-        echo "Требуется очистка JS-проекта в $path"
+        echo "Cleaning required for JS project in $path"
         return 0
       else
-        echo "Очистка не требуется для JS-проекта в $path"
+        echo "Cleaning not required for JS project in $path"
         return 1
       fi
       ;;
     "java")
       if [ -d "$path/build" ]; then
-        echo "Требуется очистка Java-проекта в $path"
+        echo "Cleaning required for Java project in $path"
         return 0
       else
-        echo "Очистка не требуется для Java-проекта в $path"
+        echo "Cleaning not required for Java project in $path"
         return 1
       fi
       ;;
     "swift")
       if [ -d "$path/build" ]; then
-        echo "Требуется очистка Swift-проекта в $path"
+        echo "Cleaning required for Swift project in $path"
         return 0
       else
-        echo "Очистка не требуется для Swift-проекта в $path"
+        echo "Cleaning not required for Swift project in $path"
         return 1
       fi
       ;;
     "cpp")
       if [ -d "$path/build" ]; then
-        echo "Требуется очистка C++-проекта в $path"
+        echo "Cleaning required for C++ project in $path"
         return 0
       else
-        echo "Очистка не требуется для C++-проекта в $path"
+        echo "Cleaning not required for C++ project in $path"
         return 1
       fi
       ;;
     *)
-      echo "Неизвестный тип проекта в $path"
+      echo "Unknown project type in $path"
       return 1
       ;;
   esac
 }
 
-# Функция для параллельного выполнения очистки
+# Function for parallel execution of cleaning
 function parallel_clean() {
   max_jobs=$(( $(nproc) * 2 ))
   jobs=()
@@ -113,5 +113,5 @@ function parallel_clean() {
   wait
 }
 
-# Вызываем функцию для текущей директории
+# Call the function for the current directory
 parallel_clean .
